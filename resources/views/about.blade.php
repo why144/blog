@@ -7,3 +7,4 @@
 <p>{{ $email }}</p>
 <img src="img/{{ $profile }}" height="300px" width="300px">
 @endsection
+
