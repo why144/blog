@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PostController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,53 +30,7 @@ Route::get('/about', function () {
     ]);
 });
 
-Route::get('/blog', function () {
-    $blog_post = [
-    [
-        "title" => "Judul Post Pertama",
-        "slug" => "judul-post-pertama",
-        "author" => "Budi Luhur",
-        "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
-    ],
-    [
-        "title" => "Judul Post Kedua",
-        "slug" => "judul-post-kedua",
-        "author" => "Budi Luhur",
-        "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
-    ],
-];
-    return view('posts', [
-        "title" => "Posts",
-        "posts" => $blog_post
-    ]);
-});
+Route::get('/blog', [PostController::class, 'index']);
 
 //Halaman single post
-Route::get('posts/{slug}', function($slug) {
-        $blog_post = [
-            [
-                "title" => "Judul Post Pertama",
-                "slug" => "judul-post-pertama",
-                "author" => "Budi Luhur",
-                "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
-            ],
-            [
-                "title" => "Judul Post Kedua",
-                "slug" => "judul-post-kedua",
-                "author" => "Budi Luhur",
-                "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
-            ],
-        ];
-
-        $new_post = [];
-        foreach ($blog_post as $post) {
-            if ($post["slug"] === $slug) {
-                $new_post = $post;
-            }
-        }
-
-        return view('post', [
-            "title" => "Single Post",
-            'post' => $new_post
-        ]);
-});
+Route::get('posts/{slug}', [PostController::class, 'show']);
