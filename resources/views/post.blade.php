@@ -3,9 +3,17 @@
 @section('container')
     <article class="mb-5">
         
-        <h2>{{ $post["title"] }}</h2>
-        <h5>{{ $post["author"] }}</h5>
-        <p>{{ $post["body"] }}</p>
-        <a href="/blog" class="btn btn-success mb-3">Kembali ke daftar post</a>
+        <h2>{{ $post->title }}</h2>
+         <p> {!! $post->body !!} </p>
+        <p><a href="/blog" class="btn btn-success mb-3">Kembali ke daftar post</a></p>
     </article>
 @endsection
+
+
+{{-- nitip
+Post::create([
+    'title' => 'Judul Post Ketiga',
+    'excerpt' => 'lorem ipsum ketiga',
+    'slug' => 'judul-ketiga',
+    'body' => '<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati vel neque ratione nulla libero provident repellendus, nihil dolor quisquam officia ab esse dolore tenetur voluptates, incidunt dicta molestiae voluptatem in amet ipsum commodi accusamus. Recusandae qui mollitia officiis sit totam perspiciatis odit nesciunt repudiandae error quibusdam, debitis, eius quod asperiores atque non, autem adipisci rerum dolore sint nulla! Atque, ab?</p> <p>Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>',
+]); --}}
