@@ -29,21 +29,52 @@ Route::get('/about', function () {
 });
 
 Route::get('/blog', function () {
-    return view('blog', [
-        "title" => "Blog"
-    ]);
-});
-
-$blog_post = [
+    $blog_post = [
     [
         "title" => "Judul Post Pertama",
-        "Author" => "Budi Luhur",
-        "post" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
+        "slug" => "judul-post-pertama",
+        "author" => "Budi Luhur",
+        "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
     ],
     [
         "title" => "Judul Post Kedua",
-        "Author" => "Budi Luhur",
-        "post" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
+        "slug" => "judul-post-kedua",
+        "author" => "Budi Luhur",
+        "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
     ],
 ];
+    return view('posts', [
+        "title" => "Posts",
+        "posts" => $blog_post
+    ]);
+});
 
+//Halaman single post
+Route::get('posts/{slug}', function($slug) {
+        $blog_post = [
+            [
+                "title" => "Judul Post Pertama",
+                "slug" => "judul-post-pertama",
+                "author" => "Budi Luhur",
+                "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
+            ],
+            [
+                "title" => "Judul Post Kedua",
+                "slug" => "judul-post-kedua",
+                "author" => "Budi Luhur",
+                "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate mollitia perspiciatis odio libero, id sequi, aspernatur fugiat sed delectus aliquam atque tempora neque placeat fugit corporis quasi. Eos, ipsa mollitia."
+            ],
+        ];
+
+        $new_post = [];
+        foreach ($blog_post as $post) {
+            if ($post["slug"] === $slug) {
+                $new_post = $post;
+            }
+        }
+
+        return view('post', [
+            "title" => "Single Post",
+            'post' => $new_post
+        ]);
+});
