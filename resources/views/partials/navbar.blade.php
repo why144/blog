@@ -15,7 +15,15 @@
               <li class="nav-item">
                 <a class="nav-link {{ ($title === "Post") ? 'active' : '' }}" href="/blog">Posts</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link {{ ($title === "Post") ? 'active' : '' }}" href="/categories">Category</a>
+              </li>
              
+            </ul>
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a href="/login" class="nav-link {{ ($title === "Login") ? 'active' : '' }}">Login</a>
+              </li>
             </ul>
           </div>
         </div>

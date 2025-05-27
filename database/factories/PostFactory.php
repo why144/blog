@@ -15,7 +15,7 @@ class PostFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(mt_rand(2, 8)),
-            'category_id' => mt_rand(1, 2), // Assuming you have 2 categories created
+            'category_id' => mt_rand(1, 3), // Assuming you have 2 categories created
             'user_id' => mt_rand(1, 5), // Assuming you have 5 users created
             'excerpt' => $this->faker->paragraph(),
             'slug' => $this->faker->slug(), 
